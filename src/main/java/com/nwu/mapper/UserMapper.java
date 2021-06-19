@@ -6,13 +6,13 @@ package com.nwu.mapper;
  */
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.nwu.entities.User;
+import com.nwu.entities.Student;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 测试接口，后期不需要
  */
 @Mapper
-public interface UserMapper extends BaseMapper<User> {
+public interface UserMapper extends BaseMapper<Student> {
 
 }

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.nwu.mapper.StudentInfoMapper">
+
+    <select id="getStudentInfo" resultType="com.nwu.entities.vo.StudentInfoVo">
+        SELECT
+            stu_all2021.number,
+
+            stu_all2021.student_type,
+
+            stu_all2021.name,
+
+            stu_all2021.campus,
+            stu_all2021.apartment,
+            stu_all2021.dormitory,
+            stu_all2021.bed,
+            stu_all2021.major,
+
+            com_department2021.department_name,
+
+            card_final2021.first_to_canteen,
+            card_final2021.first_pos,
+            card_final2021.first_cost,
+            card_final2021.first_meal,
+            card_final2021.total_times_canteen,
+            card_final2021.favorite_meal,
+            card_final2021.favorite_meal_times,
+
+            stu_book2021.first_to_library,
+            stu_book2021.total_times_library,
+            stu_book2021.total_loan,
+            stu_book2021.book_name,
+
+            stu_course2021.first_course_time,
+            stu_course2021.first_course_name,
+            stu_course2021.total_courses,
+            stu_course2021.total_credit,
+            stu_course2021.total_class_hours,
+
+            def_gym2021.gym_times
+
+        FROM
+            stu_all2021,
+            stu_book2021,
+            stu_clock2021,
+            stu_course2021,
+            card_final2021,
+            com_department2021,
+            def_gym2021
+        WHERE
+            stu_all2021.number = stu_book2021.number
+        AND stu_all2021.number = stu_clock2021.number
+        AND stu_all2021.number = stu_course2021.number
+        AND stu_all2021.number = card_final2021.number
+        AND stu_all2021.department_code = com_department2021.code
+        AND stu_all2021.number = def_gym2021.number
+        AND stu_all2021.number = #{number};
+    </select>
+
+</mapper>

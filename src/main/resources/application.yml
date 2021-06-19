@@ -1,10 +1,10 @@
 server:
-  port: 8081 # 服务端口
+  port: 8082 # 服务端口
 
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/javatest?serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/graduation_album?serverTimezone=GMT%2B8
     username: root
     password: 123456
   jdbc:
@@ -13,6 +13,8 @@ spring:
 
 # mybatis
 mybatis:
-  type-aliases-package: com.joush.entities
+  type-aliases-package: com.nwu.entities
+  # 加载 Mybatis 映射文件
+  mapper-locations: classpath:mapper/**/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: true # 驼峰命名

@@ -6,10 +6,10 @@ package com.nwu.service;
  */
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.nwu.entities.User;
+import com.nwu.entities.Student;
 
 /**
  * 测试接口，后期不需要
  */
-public interface UserService extends IService<User> {
+public interface UserService extends IService<Student> {
 }
