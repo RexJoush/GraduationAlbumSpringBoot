@@ -13,6 +13,6 @@ import lombok.Data;
 @Data
 public class Page4 {
 
-    private String enrollmentYear;  // 入学日期
+    private String name;    // 姓名
 
 }

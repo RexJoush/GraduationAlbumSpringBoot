@@ -22,7 +22,7 @@ public class Bullet {
     private int id;             // 弹幕 id
 
     @TableField("number")
-    private int number;         // 学号
+    private String number;         // 学号
     @TableField("name")
     private String name;        // 获奖姓名
 

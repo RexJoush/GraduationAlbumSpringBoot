@@ -17,4 +17,11 @@ public interface StudentService {
      */
     StudentInfo getStudentInfo(String number);
 
+    /**
+     * 获取用户的姓名，弹幕接口需要
+     * @param number 学号
+     * @return 当前学号的姓名
+     */
+    String getStudentName(String number);
+
 }

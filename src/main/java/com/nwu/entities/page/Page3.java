@@ -13,6 +13,6 @@ import lombok.Data;
 @Data
 public class Page3 {
 
-    private String name;    // 姓名
+    private String educationalSystem;     // 学制，两年，三年，四年等
 
 }

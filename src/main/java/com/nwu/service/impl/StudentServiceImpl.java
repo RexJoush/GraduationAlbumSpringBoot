@@ -6,14 +6,14 @@ import com.nwu.entities.StudentInfo;
 import com.nwu.entities.page.*;
 import com.nwu.entities.vo.StudentInfoVo;
 import com.nwu.mapper.StudentInfoMapper;
+import com.nwu.mapper.StudentMapper;
+import com.nwu.service.BulletService;
 import com.nwu.service.RewardService;
 import com.nwu.service.StudentService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +32,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Resource
     private RewardService rewardService;
+
+    @Resource
+    private StudentMapper studentMapper;
+
+    @Resource
+    private BulletService bulletService;
 
     @Override
     public StudentInfo getStudentInfo(String number) {
@@ -56,7 +62,7 @@ public class StudentServiceImpl implements StudentService {
         )
 
          */
-        System.out.println(studentInfoVo);
+        //System.out.println(studentInfoVo);
 
 
 
@@ -91,23 +97,24 @@ public class StudentServiceImpl implements StudentService {
         studentInfo.setPage2(page2);
 
         // 封装第 3 页
-        page3.setName(studentInfoVo.getName());
+        page3.setEducationalSystem(educationalSystem);
         studentInfo.setPage3(page3);
 
         // 封装第 4 页
-        page4.setEnrollmentYear("2020-09-03");
+        page4.setName(studentInfoVo.getName());
         studentInfo.setPage4(page4);
 
         // 封装第 5 页
-        page5.setCampus(studentInfoVo.getCampus());
-        page5.setApartment(studentInfoVo.getApartment());
-        page5.setDormitory(studentInfoVo.getDormitory());
-        page5.setBed(studentInfoVo.getBed());
-        page5.setRoommates(3);
-        page5.setMajor(studentInfoVo.getMajor());
+        page5.setEnrollmentYear("2020-09-03");
         studentInfo.setPage5(page5);
 
         // 封装第 6 页
+        page6.setCampus(studentInfoVo.getCampus());
+        page6.setApartment(studentInfoVo.getApartment());
+        page6.setDormitory(studentInfoVo.getDormitory());
+        page6.setBed(studentInfoVo.getBed());
+        page6.setRoommates(3);
+        page6.setMajor(studentInfoVo.getMajor());
         studentInfo.setPage6(page6);
 
         // 封装第 7 页
@@ -142,16 +149,24 @@ public class StudentServiceImpl implements StudentService {
 
         // 封装第 11 页
         QueryWrapper<Reward> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("number", "202032978");
+        queryWrapper.eq("number", studentInfoVo.getNumber());
         List<Reward> rewards = rewardService.list(queryWrapper);
-
-        // 封装第 12 页
-        studentInfo.setPage12(page12);
 
         page11.setEducationalSystem(educationalSystem);
         page11.setRewards(rewards);
         studentInfo.setPage11(page11);
 
+        // 封装第 12 页
+        studentInfo.setPage12(page12);
+
+        // 封装弹幕列表
+        studentInfo.setBullets(bulletService.getBullets());
+
         return studentInfo;
+    }
+
+    @Override
+    public String getStudentName(String number) {
+        return studentMapper.getStudentName(number);
     }
 }

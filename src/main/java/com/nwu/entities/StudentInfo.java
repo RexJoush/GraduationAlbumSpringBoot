@@ -1,7 +1,10 @@
 package com.nwu.entities;
 
 import com.nwu.entities.page.*;
+import com.nwu.entities.vo.BulletVo;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * @author Rex Joush
@@ -29,5 +32,7 @@ public class StudentInfo {
     private Page10 page10;
     private Page11 page11;
     private Page12 page12;
+
+    private List<BulletVo> bullets; // 弹幕数据
 
 }
