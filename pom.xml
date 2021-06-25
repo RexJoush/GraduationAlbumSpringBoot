@@ -11,13 +11,26 @@
     <groupId>com.nwu</groupId>
     <artifactId>GraduationAlbumSpringBoot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>GraduationAlbumSpringBoot</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
     </properties>
     <dependencies>
+
+        <!--  单点登录 统一身份认证-->
+        <dependency>
+            <groupId>org.jasig.cas.client</groupId>
+            <artifactId>cas-client-core</artifactId>
+            <version>3.5.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <!--  json 处理  -->
         <dependency>
@@ -97,5 +110,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

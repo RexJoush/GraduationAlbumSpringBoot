@@ -44,6 +44,10 @@ public class StudentServiceImpl implements StudentService {
 
         StudentInfoVo studentInfoVo = infoMapper.getStudentInfo(number);
 
+        if (studentInfoVo == null) {
+            return null;
+        }
+
         /*
         StudentInfoVo(
             number=202032978, studentType=硕士,

@@ -1,0 +1,21 @@
+.related {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  color: #eebbc3;
+  text-align: center;
+}
+.related span {
+  position: absolute;
+  font-size: 0.4rem;
+  top: 25%;
+  left: 0 /* text-align: center; */;
+}
+#firefly {
+  background-color: #252424;
+  width: 100%;
+  height: 100%;
+}
+#firefly img {
+  z-index: 999;
+}

@@ -1,12 +1,12 @@
 server:
-  port: 8082 # 服务端口
+  port: 8080 # 服务端口
 
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://bys.nwu.edu.cn:3306/graduation_album?serverTimezone=UTC
     username: root
-    password: 123456
+    password: graduation_album123
   jdbc:
     template:
       query-timeout: 3 # 查询超时时间，以秒为单位

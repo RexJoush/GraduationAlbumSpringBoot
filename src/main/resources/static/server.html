@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        axios.get("http://bys.nwu.edu.cn:8080/student/getStudentInfo",{
+            // 请求行
+            params:{
+                // 学号
+                number:202032978
+            },
+            head:{
+                a:123
+            }
+        }).then(value=>{
+            if(value.data.code == 1200){
+                console.log(value.data.data);
+                window.data = 1;
+            }           
+        });
+    </script>
+</body>
+</html>

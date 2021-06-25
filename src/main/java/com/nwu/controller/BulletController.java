@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nwu.entities.Bullet;
 import com.nwu.service.BulletService;
 import com.nwu.service.StudentService;
+import com.nwu.util.CASUtil;
 import com.nwu.util.Result;
 import com.nwu.util.TimeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -34,15 +36,15 @@ public class BulletController {
 
     /**
      * 添加弹幕
-     * @param number 学号
      * @param content 内容
      * @return 返回结果
      */
     @GetMapping("/addBullet")
-    public String addBullet(@RequestParam("number") String number,
-                            @RequestParam("content") String content){
+    public String addBullet(HttpServletRequest request, @RequestParam("content") String content){
 
         boolean save = false;
+        String number = CASUtil.getAccountNameFromCas(request);
+        System.out.println(number);
 
         if (!"".equals(number) && !"".equals(content)){
 

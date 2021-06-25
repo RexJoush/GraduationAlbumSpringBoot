@@ -1,0 +1,320 @@
+@font-face {
+    /* 自己指定字体名称 */
+    font-family: "myfont";
+    /* 服务器字体的地址 */
+    src: url("C:/Windows/Fonts/HGY3_CNKI.TTF");
+}
+
+
+// 解决外边距问题,内部塌陷
+.clearfix::before,
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+// 头部元素
+.header {
+    // 高度
+    height: 2rem;
+    // 开启定位使其可以浮层
+    position: absolute;
+    // 放置在最上层
+    z-index: 999;
+    // 开启弹性盒子
+    display: flex;
+    // 展示方向
+    flex-direction: column;
+    // 
+    justify-content: space-around;
+    // 将header整体放在右边
+    right: 0;
+    // 头部元素位置
+    margin-top: 0.4rem;
+    margin-right: 0.2rem;
+
+    // 子元素间隔  
+    li {
+        margin-left: 0.4rem;
+    }
+
+    .user_box {
+        position: relative;
+        width: 0.8rem;
+        height: 0.8rem;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            width: 0.8rem;
+            height: 0.8rem;
+        }
+    }
+
+    .barrage_box {
+        position: relative;
+        width: 0.8rem;
+        height: 0.8rem;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            width: 0.8rem;
+            height: 0.8rem;
+        }
+    }
+
+    .music_box {
+        position: relative;
+        width: 0.7rem;
+        height: 0.7rem;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            width: 0.7rem;
+            height: 0.7rem;
+        }
+    }
+}
+
+// 公共样式
+.public(@bgi) {
+    width: 7.5rem;
+    height: 12rem;
+    background-size: 100vw 100vh;
+    background-image: @bgi;
+    .to{
+        bottom: 5vh;
+        right: 0;
+        height: 20vh;
+
+        position: absolute;
+        z-index: 1;
+    }
+}
+
+// 做list的包含块
+.swiper-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
+// 内容区
+.contain {
+    height: 100vh - 1.5rem;
+    width: 70vw;
+    margin: 0.5rem auto 0 auto;
+    // text-align: center;
+    span {
+        color: #2b374a;
+        font-size: 0.35rem;
+        // font-family: "Helvetica;";
+        font-family: "myfont";
+        // vertical-align: middle;
+        font-weight: bolder;
+        display: block;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        margin-bottom: 0.5rem;
+    }
+    overflow: hidden;
+}
+// 第一页和最后一页居中
+.normal{
+    height: 100vh - 1.5rem;
+    width: 70vw;
+    margin: 1.5rem auto 0 auto;
+    text-align: center;    
+}
+
+// 毕业快乐
+.by1,
+.by2 {
+    width: 100vw;
+    height: 40vh;
+    opacity: 0;
+}
+
+// 每页样式
+.outer1 {
+    // 插入公有样式
+    .public(url("../backgroundImages/1.jpg"));
+}
+
+.outer2 {
+    .public(url("../backgroundImages/2.jpg"));
+}
+
+.outer3 {
+    .public(url("../backgroundImages/3.jpg"));
+}
+
+.outer4 {
+    .public(url("../backgroundImages/4.jpg"));
+}
+
+.outer5 {
+    .public(url("../backgroundImages/5.jpg"));
+}
+
+.outer6 {
+    .public(url("../backgroundImages/6.jpg"));
+}
+
+// 餐厅样式
+.outer7 {
+    .public(url("../backgroundImages/7.jpg"));
+
+    // 彩蛋
+    .box1 {
+        width: 1rem;
+        height: 1rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        // 礼盒
+        .gift {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+
+    .box2 {
+        width: 3rem;
+        height: 3rem;
+        position: absolute;
+        left: 30vw;
+        top: 30vh;
+        // opacity: 0;
+        // 干饭人
+        .eatMan {
+            width: 3rem;
+            height: 3rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+    }
+}
+
+.outer8 {
+    .public(url("../backgroundImages/8.jpg"));
+}
+
+.outer9 {
+    .public(url("../backgroundImages/9.jpg"));
+}
+
+.outer10 {
+    .public(url("../backgroundImages/10.jpg"));
+}
+
+.outer11 {
+    .public(url("../backgroundImages/11.jpg"));
+}
+
+.outer12 {
+    .public(url("../backgroundImages/12.jpg"));
+}
+
+.outer13 {
+    .public(url("../backgroundImages/13.jpg"));
+}
+
+.outer14 {
+    // 刷新按钮
+    .fresh {
+        display: block;
+        float: left;
+        width: 0.8rem;
+        height: 0.8rem;
+        margin-top: 0.3rem;
+        margin-left: 0.2rem;
+
+        img {
+            width: 0.8rem;
+            height: 0.8rem;
+        }
+    }
+}
+//谢幕 
+.outer {
+    overflow: hidden;
+    height: 50vh;
+    width: 100vw;
+    position: absolute;
+    // top: 30vh;
+}
+
+.ending {
+    position: absolute;
+    left: 50%;
+    margin-left: -2.5rem;
+    height: 100vh;
+    width: 5rem;
+    color: white;
+    li {
+        margin-bottom: 1rem;
+    }
+    #title{
+        margin-bottom: 2rem;
+    }
+    h3{
+        width: 5rem;
+        font-size: 0.5rem;
+        height: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    h4 {
+        font-size: 0.4rem;
+        margin-bottom: 0.2rem;
+    }
+    p{
+        width: 5rem;
+        height: 0.5rem;
+        color: white;   
+        margin-bottom: 0;
+        font-size: 0.35rem;
+    }
+    span{
+        width: 5rem;
+        height: 0.5rem;
+        color: white;   
+        margin-bottom: 0;
+    }
+    .img_box{
+        margin-top:4rem;
+        margin-left:-0.5rem;
+        width: 6rem;
+        height: 2rem;
+    }
+    img{
+        width: 6rem;
+        height: 2rem;
+    }
+}
+
+// 谢幕动画
+.move {
+    animation-name: move;
+    animation-duration: 30s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    // animation-iteration-count: infinite;
+}
+
+@keyframes move {
+    from {
+        top: 50vh;
+    }
+
+    to {
+        top: -100vh;
+    }
+}
