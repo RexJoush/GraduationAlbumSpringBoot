@@ -9,12 +9,14 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 用户实体类，包括用户基本信息
  */
 @Data
 @TableName("stu_all2021")
-public class Student {
+public class Student implements Serializable {
 
     @TableField("number")
     private String number;      // 学号

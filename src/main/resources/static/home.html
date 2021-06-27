@@ -1777,7 +1777,7 @@
 				</div>
 			</div>
 			<!-- 谢幕 -->
-			<div class="swiper-slide outer14 clearfix" id="firefly">
+			<div class="swiper-slide outer14 clearfix">
 				<!-- 重新观看 -->
 				<a class="fresh" href="">
 					<img src="./图片素材/Refresh Page.png" alt="">
@@ -1796,7 +1796,8 @@
 								<p>陈&nbsp;&nbsp;&nbsp;&nbsp;原&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;李浩阳</p>
 								<p>刘佳宇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;赵慧敏</p>
 								<p>李一航&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;董&nbsp;&nbsp;&nbsp;&nbsp;盼</p>
-								<p>尤&nbsp;&nbsp;&nbsp;&nbsp;琪&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;褚梦想</p>
+								<p>尤&nbsp;&nbsp;&nbsp;&nbsp;琪&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;胡海洋</p>
+								<p>褚梦想</p>
 						</li>
 						<li>
 							<h4>插图--艺术学院</h4>
@@ -1813,7 +1814,10 @@
 					</ul>
 					
 				</div>
-				<button style="width: 200px;height: 200px;position: absolute;z-index: 70000;top: 0;" id = "save">一键生成图片</button>
+				<div id="save">
+					<img src="./图片素材/createImage.png" alt="">
+				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -1834,9 +1838,10 @@
 	<script src="./js/swiper_init.js"></script>
 	<!-- 弹幕框初始化 -->
 	<script src="./js/danmu_init.js" type="module"></script>
-	<!-- 引入头部js -->
+	<!-- 引入微信js -->
 	<!-- 解决iphone自动播放 -->
-	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script type="text/javascript" src="https://res2.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+	<!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> -->
 	<script src="./js/header.js"></script>
 	<!-- 食堂彩蛋样式 -->
 	<script>
@@ -1877,14 +1882,17 @@
 			}, 5000);
 		});
 	</script>
+
 	<!-- 学霸彩蛋 -->
 	<script src="./js/rectangleEmitter.js"></script>
 	<script src="./js/snow.js"></script>
 	<script src="./js/classie.js"></script>
 	<script src="./js/main.js"></script>
+
 	<!-- 插入文字 -->
 	<script src="./js/server.js" type="module"></script>
 	<script src="./js/word.js" type="module"></script>
+
 	<!-- 一键生成图片 -->
 	<script src="./js/html2canvas.min.js"></script>
     <script>
@@ -1926,6 +1934,9 @@
 			screenShoot();
 		};
 	</script>
+
+	<!-- 引入分享 -->
+	<script src="./share.js" type="module"></script>
 </body>
 
 </html>

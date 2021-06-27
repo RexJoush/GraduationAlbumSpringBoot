@@ -7,13 +7,14 @@ package com.nwu.entities.page;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 第 10 页
  */
 @Data
-public class Page10 {
+public class Page10 implements Serializable {
 
     // private List<String> locations;         // 疫情期间打卡地点
 

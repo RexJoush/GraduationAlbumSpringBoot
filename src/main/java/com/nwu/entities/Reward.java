@@ -9,6 +9,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 奖励列表
  *
@@ -16,7 +18,7 @@ import lombok.Data;
  */
 @Data
 @TableName("stu_reward2021")
-public class Reward {
+public class Reward implements Serializable {
 
     @TableField("number")
     private String number;      // 获奖学号

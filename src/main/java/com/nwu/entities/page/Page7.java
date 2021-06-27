@@ -7,11 +7,13 @@ package com.nwu.entities.page;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 第 7 页
  */
 @Data
-public class Page7 {
+public class Page7 implements Serializable {
 
     private String firstToCanteen;      // 第一次进食堂时间
     private String firstPos;            // 第一次进食堂位置

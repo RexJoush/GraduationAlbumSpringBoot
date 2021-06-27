@@ -8,13 +8,14 @@ package com.nwu.entities.vo;
 import com.nwu.entities.Reward;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 查询的结果封装类
  */
 @Data
-public class StudentInfoVo {
+public class StudentInfoVo implements Serializable {
 
     private String number;                  // 学号
 

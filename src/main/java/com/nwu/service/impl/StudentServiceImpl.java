@@ -7,9 +7,12 @@ import com.nwu.entities.page.*;
 import com.nwu.entities.vo.StudentInfoVo;
 import com.nwu.mapper.StudentInfoMapper;
 import com.nwu.mapper.StudentMapper;
+import com.nwu.service.BookExceedService;
 import com.nwu.service.BulletService;
 import com.nwu.service.RewardService;
 import com.nwu.service.StudentService;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -34,13 +37,29 @@ public class StudentServiceImpl implements StudentService {
     private RewardService rewardService;
 
     @Resource
+    private BookExceedService bookExceedService;
+
+    @Resource
     private StudentMapper studentMapper;
 
     @Resource
-    private BulletService bulletService;
+    private RedisTemplate<String, StudentInfo> redisTemplate;
 
     @Override
     public StudentInfo getStudentInfo(String number) {
+
+        // 获取 redis 操作对象
+        ValueOperations<String, StudentInfo> stringStudentInfoValueOperations = redisTemplate.opsForValue();
+
+        // 如果有，直接返回数据，没有则去数据库查
+        try {
+            if (redisTemplate.hasKey(number)) {
+                // System.out.println("redis info");
+                return stringStudentInfoValueOperations.get(number);
+            }
+        } catch (NullPointerException e){
+            return null;
+        }
 
         StudentInfoVo studentInfoVo = infoMapper.getStudentInfo(number);
 
@@ -67,11 +86,8 @@ public class StudentServiceImpl implements StudentService {
 
          */
         //System.out.println(studentInfoVo);
-
-
-
-        // 结果对象
         StudentInfo studentInfo = new StudentInfo();
+
 
         // 分页对象
         Page1 page1 = new Page1();
@@ -87,11 +103,12 @@ public class StudentServiceImpl implements StudentService {
         Page11 page11 = new Page11();
         Page12 page12 = new Page12();
 
+        // 计算学制
         String educationalSystem = String.valueOf(Calendar.getInstance().get(Calendar.YEAR) - Integer.parseInt(number.substring(0, 4)));
 
 
         // 封装学号
-        studentInfo.setNumber(studentInfoVo.getNumber());
+        studentInfo.setNumber(number);
 
         // 封装第 1 页
         studentInfo.setPage1(page1);
@@ -109,7 +126,7 @@ public class StudentServiceImpl implements StudentService {
         studentInfo.setPage4(page4);
 
         // 封装第 5 页
-        page5.setEnrollmentYear("2020-09-03");
+        page5.setEnrollmentYear("2020-09-03"); // Todo: 入学日期
         studentInfo.setPage5(page5);
 
         // 封装第 6 页
@@ -117,7 +134,7 @@ public class StudentServiceImpl implements StudentService {
         page6.setApartment(studentInfoVo.getApartment());
         page6.setDormitory(studentInfoVo.getDormitory());
         page6.setBed(studentInfoVo.getBed());
-        page6.setRoommates(3);
+        page6.setRoommates(3); // Todo: 舍友人数
         page6.setMajor(studentInfoVo.getMajor());
         studentInfo.setPage6(page6);
 
@@ -136,7 +153,8 @@ public class StudentServiceImpl implements StudentService {
         page8.setTotalTimesLibrary(studentInfoVo.getTotalTimesLibrary());
         page8.setTotalLoan(studentInfoVo.getTotalLoan());
         page8.setBookName(studentInfoVo.getBookName());
-        page8.setExceeds(56);
+        // 超过的人数
+        page8.setExceeds(bookExceedService.getExceed(number));
         studentInfo.setPage8(page8);
 
         // 封装第 9 页
@@ -148,7 +166,7 @@ public class StudentServiceImpl implements StudentService {
         studentInfo.setPage9(page9);
 
         // 封装第 10 页
-        page10.setGymTimes(10);
+        page10.setGymTimes(studentInfoVo.getGymTimes());
         studentInfo.setPage10(page10);
 
         // 封装第 11 页
@@ -163,8 +181,7 @@ public class StudentServiceImpl implements StudentService {
         // 封装第 12 页
         studentInfo.setPage12(page12);
 
-        // 封装弹幕列表
-        studentInfo.setBullets(bulletService.getBullets());
+        stringStudentInfoValueOperations.set(number, studentInfo);
 
         return studentInfo;
     }

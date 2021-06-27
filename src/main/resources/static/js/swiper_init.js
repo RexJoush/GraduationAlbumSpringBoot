@@ -33,40 +33,40 @@ var mySwiper = new Swiper('.swiper-container', {
                 case 4:
                     $(".outer4 .contain").removeClass("animation fade-in-up");
                     $(".outer5 .contain").addClass("animation fade-in-left");
-                    $(".outer6 .contain").removeClass("animation fade-in-left");
+                    $(".outer6 .contain").removeClass("animation roll-in-right");
                     break;
                 case 5:
                     $(".outer5 .contain").removeClass("animation fade-in-left");
-                    $(".outer6 .contain").addClass("animation fade-in-left");
+                    $(".outer6 .contain").addClass("animation roll-in-right");
                     $(".outer7 .contain").removeClass("animation rotbo-in-left");
                     break;
                 case 6:
                     $(".outer6 .contain").removeClass("animation roll-in-right");
                     $(".outer7 .contain").addClass("animation rotbo-in-left");
-                    $(".outer8 .contain").removeClass("animation flip-in-y");
+                    $(".outer8 .contain").removeClass("animation bounce-in-left");
                     break;
                 case 7:
                     $(".outer7 .contain").removeClass("animation rotbo-in-left");
-                    $(".outer8 .contain").addClass("animation flip-in-y");
+                    $(".outer8 .contain").addClass("animation bounce-in-left");
                     $(".outer9 .contain").removeClass("animation back-in-right");
                     break;
                 case 8:
-                    $(".outer8 .contain").removeClass("animation flip-in-y");
+                    $(".outer8 .contain").removeClass("animation bounce-in-left");
                     $(".outer9 .contain").addClass("animation back-in-right");
-                    $(".outer10 .contain").removeClass("animation flip-in-y");
+                    $(".outer10 .contain").removeClass("animation roll-in-right");
                     break;
                 case 9:
                     $(".outer9 .contain").removeClass("animation back-in-right");
-                    $(".outer10 .contain").addClass("animation flip-in-y");
+                    $(".outer10 .contain").addClass("animation roll-in-right");
                     $(".outer11 .contain").removeClass("animation back-in-up");
                     break;
                 case 10:
-                    $(".outer10 .contain").removeClass("animation flip-in-y");
+                    $(".outer10 .contain").removeClass("animation roll-in-right");
                     $(".outer11 .contain").addClass("animation back-in-up");
                     // $(".outer12 .contain").removeClass("animation back-in-down");
                     break;
                 case 11:
-                    $(".outer11 .contain").removeClass("animation wabble");
+                    $(".outer11 .contain").removeClass("animation back-in-up");
                     // $(".outer12 .contain").addClass("animation back-in-down");
                     $(".outer13 .contain").removeClass("animation fade-in-left");
                     break;

@@ -7,11 +7,13 @@ package com.nwu.entities.page;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 第 8 页
  */
 @Data
-public class Page8 {
+public class Page8 implements Serializable {
 
     private String firstToLibrary;      // 第一次进图书馆的时间
     private int totalTimesLibrary;      // 进图书馆的次数

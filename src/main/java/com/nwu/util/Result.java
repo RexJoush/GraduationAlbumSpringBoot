@@ -52,4 +52,17 @@ public class Result {
         result.put("message", message);
         return JSON.toJSONString(result);
     }
+
+    /**
+     * 请求成功的接口，返回自定义代码和信息
+     * @param code 自定义返回码
+     * @param message 提示信息
+     * @return 结果集合
+     */
+    public static String info(int code, String message) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("code", code);
+        result.put("message", message);
+        return JSON.toJSONString(result);
+    }
 }

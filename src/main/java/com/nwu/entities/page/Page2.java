@@ -7,11 +7,13 @@ package com.nwu.entities.page;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 第 2 页
  */
 @Data
-public class Page2 {
+public class Page2 implements Serializable {
 
     private String educationalSystem;     // 学制，两年，三年，四年等
 

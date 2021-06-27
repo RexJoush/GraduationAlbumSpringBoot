@@ -11,12 +11,14 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 弹幕留言实体类
  */
 @TableName("def_bullet2021")
 @Data
-public class Bullet {
+public class Bullet implements Serializable {
 
     @TableId(value = "id", type = IdType.AUTO)
     private int id;             // 弹幕 id

@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author Rex Joush
  * @time 2021.06.16 19:25
@@ -14,7 +16,7 @@ import lombok.Data;
  */
 @TableName
 @Data
-public class Book {
+public class Book implements Serializable {
 
     @TableField("number")
     private String number;          // 学号

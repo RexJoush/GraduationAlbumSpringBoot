@@ -7,6 +7,11 @@ spring:
     url: jdbc:mysql://bys.nwu.edu.cn:3306/graduation_album?serverTimezone=UTC
     username: root
     password: graduation_album123
+  redis:
+    host: bys.nwu.edu.cn
+    password: graduation_album123
+    port: 6379
+    client-type: jedis
   jdbc:
     template:
       query-timeout: 3 # 查询超时时间，以秒为单位
@@ -18,3 +23,7 @@ mybatis:
   mapper-locations: classpath:mapper/**/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: true # 驼峰命名
+
+# 弹幕审核人员的学号可写多个，以 , 分割，此学号登录后会直接跳转审核页面
+bullet:
+  numbers: 202032981, 202032182

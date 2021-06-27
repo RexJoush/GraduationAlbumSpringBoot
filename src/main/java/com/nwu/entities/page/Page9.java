@@ -7,11 +7,13 @@ package com.nwu.entities.page;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 第 9 页
  */
 @Data
-public class Page9 {
+public class Page9 implements Serializable {
 
     private String firstCourseTime;     // 第一门课的上课日期
     private String firstCourseName;     // 第一门课的课程名称

@@ -4,6 +4,7 @@ import com.nwu.entities.page.*;
 import com.nwu.entities.vo.BulletVo;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
  * 要展示的学生信息
  */
 @Data
-public class StudentInfo {
+public class StudentInfo implements Serializable {
 
     private String number;  // 学号
 
@@ -32,7 +33,5 @@ public class StudentInfo {
     private Page10 page10;
     private Page11 page11;
     private Page12 page12;
-
-    private List<BulletVo> bullets; // 弹幕数据
 
 }

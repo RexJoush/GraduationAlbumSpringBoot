@@ -7,11 +7,13 @@ package com.nwu.entities.page;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 第 6 页
  */
 @Data
-public class Page6 {
+public class Page6 implements Serializable {
     private String campus;      // 校区名称，长安校区，太白校区等
     private String apartment;   // 公寓楼号， 2号楼，等等
     private String dormitory;   // 宿舍号
