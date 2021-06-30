@@ -5,10 +5,13 @@ package com.nwu.entities.page;
  * @time 2021.06.09 09:51
  */
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
  * 第 12 页
  */
-public class Page12 implements Serializable {
+@Data
+public class Page12 {
 }

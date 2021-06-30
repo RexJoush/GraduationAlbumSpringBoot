@@ -12,21 +12,35 @@
   <link rel="stylesheet" href="./css/vw.css">
   <!-- 导入样式 -->
   <link rel="stylesheet" href="./css/style_second_f.css">
+  <!-- 改变默认样式 -->
+  <link rel="stylesheet" href="./css/reset.css">
 </head>
 
 <body>
-  <div class="htmleaf-container" id="firefly">
-    <div class="related">
-      <span>书上说：天下没有不散的宴席。但不要怕，书上还说：人生何处不相逢？
-      <br/>在夏天遇见的，就在夏天告别吧。
-      <br/>但是你的四年经历，我们会一直帮你留存，让我们一起来看看吧</span>
-      <!-- 跳转到主页 -->
-      <a href="../home.html">
-        <img id = "btn1" src="./images/开始.png" alt="">
-      </a>
-      
+  <div class="related">
+    <span>书上说：天下没有不散的宴席。但不要怕，书上还说：人生何处不相逢？
+    <br/>在夏天遇见的，就在夏天告别吧。
+    <br/>但是你的四年经历，我们会一直帮你留存，让我们一起来看看吧</span>
+    <!-- 跳转到主页 -->
+    <div class="newpage" href="../home.html">
+      <img id = "btn1" src="./images/开始.png" alt="">
     </div>
   </div>
+  <!-- 引入jQuery -->
+  <script src="../js/jQuery.js"></script>
+  <!-- 改变链接方式 -->
+  <script>
+    $('.newpage').on('click', function (event) {
+        window.location.replace('../home.html');
+      });
+    // history.pushState(null, null, document.URL); //禁止网页返回上一页
+  </script>
+  <!-- 引入axios -->
+  <script src="../js/axios.js"></script>
+  <!-- 引入微信 -->
+  <script type="text/javascript" src="https://res2.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+  <!-- 引入分享 -->
+  <script src="../js/share.js" type="module"></script>
 </body>
 
 </html>

@@ -15,6 +15,6 @@ import java.io.Serializable;
 @Data
 public class Page3 implements Serializable {
 
-    private String educationalSystem;     // 学制，两年，三年，四年等
+    private int educationalSystem;     // 学制，两年，三年，四年等
 
 }

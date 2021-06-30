@@ -15,9 +15,19 @@ public interface BulletService extends IService<Bullet> {
 
     /**
      * 设置某条留言已通过
-     * @return
+     * @param id 留言 id
+     * @param passTime 通过的时间
+     * @return 通过条数
      */
-    int checkedBullet(int id, String passTime);
+    int checkedPassBullet(int id, String checkTime, String passTime);
+
+    /**
+     *
+     * @param id 留言 id
+     * @param checkTime 审核的时间
+     * @return 审核未通过条数
+     */
+    int checkedNotPass(int id, String checkTime);
 
     /**
      * 获取审核通过的留言列表，300条

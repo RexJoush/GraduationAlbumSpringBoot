@@ -26,7 +26,10 @@ dataObj.then(value => {
             每个人的小小习惯你都难以忘怀。`);
         }
 
-        // 第七页
+        // 第七页--食堂
+        if(studentInfo.page7.totalTimesCanteen < 20000){
+            $(".box1").css("display", "none");
+        }
         if (studentInfo.page7.firstToCanteen && studentInfo.page7.firstCost && studentInfo.page7.firstMeal && studentInfo.page7.totalTimesCanteen && studentInfo.page7.favoriteMeal && studentInfo.page7.favoriteMealTimes) {
             $(".outer7 span").html(`来到西大，你一定见过这样的经典搭配：<br />凉皮 夹馍
         配冰峰,不知其中哪一个是你的最爱？<br />在<b style = "font-size: 0.5rem; color: #f9dd56"> ${studentInfo.page7.firstToCanteen} </b>，你第一次走进食堂，用<b style = "font-size: 0.5rem; color: #f9dd56"> ${studentInfo.page7.firstCost} </b>元买了<b style = "font-size: 0.5rem; color: #f9dd56"> ${studentInfo.page7.firstMeal} </b>。<br />从下课铃声一响就奔向食堂,到后来慢悠悠地错峰吃饭<br />你一共踏进食堂<b style = "font-size: 0.5rem; color: #f9dd56"> ${studentInfo.page7.totalTimesCanteen} </b>次。<br /><b style = "font-size: 0.5rem; color: #f9dd56"> ${studentInfo.page7.favoriteMeal} </b>对你来说一定是最特别的味道，<br />你曾在那里消费了<b style = "font-size: 0.5rem; color: #f9dd56"> ${studentInfo.page7.favoriteMealTimes} </b>次。`);
@@ -82,12 +85,23 @@ dataObj.then(value => {
         let rewardsStr = "";
         for (let i = 0; i < studentInfo.page11.rewards.length; i++) {
             rewardsStr += `<b style = "font-size: 0.5rem; color: #f9dd56">`
+            rewardsStr += studentInfo.page11.rewards[i].year;
+            rewardsStr += "年";
             rewardsStr += studentInfo.page11.rewards[i].award;
             rewardsStr += "</b><br />";
         }
         $(".outer11 span").html(`这四年，你走了很远的路<br />也收获了许多荣誉。<br /> ${rewardsStr} 种种成就的背后<br />是你从一个青涩的孩子，<br />到独当一面的大人的蜕变。`);
         // 第十二页
+        if(studentInfo.page11.rewards.length > 3){
+            $(".background").html(`<img src="./图片素材/nb.png" alt="">`);
+        }
+        else if(studentInfo.page11.rewards.length > 0 && studentInfo.page11.rewards.length < 4){
+            $(".background").html(`<img src="./图片素材/well.png" alt="">`);
+        }
+        else{
+            $(".background").html(`<img src="./图片素材/fighting.png" alt="">`);
+        }
+        // 第十三页
         $(".outer13 span").html(`岁月匆匆，这一站即将到达终点。<br />过去的日子，<br />西大将永远为你珍藏。<br />未来的日子，<br />你要继续年轻与勇敢。<br />山水万程，心持正大。`);
     }
-
 })

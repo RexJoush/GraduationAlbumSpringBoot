@@ -10,20 +10,38 @@
   <link rel="stylesheet" href="./css/vw.css">
   <!-- 导入样式 -->
   <link rel="stylesheet" href="./css/style_second_t.css">
+  <!-- 改变默认样式 -->
+  <link rel="stylesheet" href="./css/reset.css">
 </head>
 
 <body>
   <div class="satic-area">
-    <div class="dynamic-area1">
-      <span>愿此去前程似锦，再相逢依然如故！让我们开始毕业之旅吧!</span>
-      <!-- 跳转到主页 -->
-      <a href="../home.html">
-        <img id="btn1" src="./images/开始.png" alt="">
-      </a>
+    <!-- <div class="dynamic-area1"> -->
+    <span>愿此去前程似锦，再相逢依然如故！让我们开始毕业之旅吧!</span>
+    <!-- 跳转到主页 -->
+    <div class="newpage" href="../home.html">
+      <img id="btn1" src="./images/开始.png" alt="">
     </div>
+    <!-- </div> -->
     <!-- <div class="dynamic-area2">12321</div> -->
   </div>
 
+
+  <!-- 引入jQuery -->
+  <script src="../js/jQuery.js"></script>
+  <!-- 改变链接方式 -->
+  <script>
+      $('.newpage').on('click', function (event) {
+        window.location.replace('../home.html');
+      });
+      // history.pushState(null, null, document.URL); //禁止网页返回上一页
+  </script>
+  <!-- 引入微信 -->
+  <script type="text/javascript" src="https://res2.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+  <!-- 引入axios -->
+  <script src="../js/axios.js"></script>
+  <!-- 引入分享 -->
+  <script src="../js/share.js" type="module"></script>
 </body>
 
 </html>

@@ -17,16 +17,14 @@ import java.io.Serializable;
  * 2019 年 你荣获西北大学一等奖学金
  */
 @Data
-@TableName("stu_reward2021")
+@TableName("t_stu_reward2021")
 public class Reward implements Serializable {
 
     @TableField("number")
     private String number;      // 获奖学号
+
     @TableField("name")
     private String name;        // 获奖姓名
-
-    @TableField("department")
-    private String department;  // 院系
 
     @TableField("award")
     private String award;       // 奖励类型

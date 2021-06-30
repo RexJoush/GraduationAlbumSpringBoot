@@ -26,4 +26,11 @@ mybatis:
 
 # 弹幕审核人员的学号可写多个，以 , 分割，此学号登录后会直接跳转审核页面
 bullet:
-  numbers: 202032981, 202032182
+  numbers: 202032990, 202032970, 202032985
+
+# 统一身份认证配置接口
+union:
+  # 统一认证服务接口
+  casURL: http://authserver.nwu.edu.cn/authserver
+  # 部署统一认证应用接口
+  appURL: http://bys.nwu.edu.cn:8080/

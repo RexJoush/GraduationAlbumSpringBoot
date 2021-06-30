@@ -27,8 +27,13 @@ public class BulletServiceImpl extends ServiceImpl<BulletMapper, Bullet> impleme
 
 
     @Override
-    public int checkedBullet(int id, String passTime) {
-        return bulletMapper.checkedBullet(id, passTime);
+    public int checkedPassBullet(int id, String checkTime, String passTime) {
+        return bulletMapper.checkedBullet(id, checkTime, passTime);
+    }
+
+    @Override
+    public int checkedNotPass(int id, String checkTime) {
+        return bulletMapper.checkedNotPass(id, checkTime);
     }
 
     @Override

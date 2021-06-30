@@ -21,6 +21,6 @@ public class Page7 implements Serializable {
     private String firstMeal;           // 第一次吃的饭
     private int totalTimesCanteen;      // 进食堂的次数
     private String favoriteMeal;        // 最喜欢的菜
-    private String favoriteMealTimes;   // 最喜欢的菜吃的次数
+    private int favoriteMealTimes;      // 最喜欢的菜吃的次数
 
 }

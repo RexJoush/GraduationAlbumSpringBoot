@@ -5,11 +5,9 @@ package com.nwu.entities.vo;
  * @time 2021.06.16 19:45
  */
 
-import com.nwu.entities.Reward;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 查询的结果封装类
@@ -20,7 +18,7 @@ public class StudentInfoVo implements Serializable {
     private String number;                  // 学号
 
     /* page2, page11 */
-    private String studentType;             // 学生类型，博士硕士学士，需要换算对应时间，两年，三年，四年等
+    private String educationalSystem;       // 学生类型，博士硕士学士，需要换算对应时间，两年，三年，四年等
 
     /* page3 */
     private String name;                    // 姓名
@@ -33,7 +31,7 @@ public class StudentInfoVo implements Serializable {
     private String apartment;   // 公寓楼号， 2号楼，等等
     private String dormitory;   // 宿舍号
     private String bed;         // 床位号
-    // private int roommates;   // 宿舍人数
+     private int roommates;   // 宿舍人数
     private String major;       // 专业名称
 
     /* page7 */

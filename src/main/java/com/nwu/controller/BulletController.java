@@ -76,7 +76,7 @@ public class BulletController {
         Page<Bullet> userPage = new Page<>(currentPage, 10);
 
         QueryWrapper<Bullet> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("is_pass", 0); // 查询未审核过的
+        queryWrapper.eq("is_check", 0); // 查询未审核过的
 
         Page<Bullet> page = bulletService.page(userPage, queryWrapper);
         HashMap<String, Object> map = new HashMap<>();
@@ -89,12 +89,12 @@ public class BulletController {
     }
 
     /**
-     * 提交审核弹幕
+     * 提交审核通过弹幕
      * @param ids id 列表
      * @return 提交成功的次数
      */
     @GetMapping("/checkBullets")
-    public String check(@RequestParam("ids") List<Integer> ids){
+    public String checkPass(@RequestParam("ids") List<Integer> ids){
 
         String passTime = TimeUtils.simpleDateFormat.format(new Date());
 
@@ -102,7 +102,33 @@ public class BulletController {
 
         if (ids.size() > 0) {
             for (Integer id : ids) {
-                if (bulletService.checkedBullet(id, passTime) > 0){
+                if (bulletService.checkedPassBullet(id, passTime, passTime) > 0){
+                    count++;
+                }
+            }
+        } else {
+            return Result.error("提交失败,数据个数为 0");
+        }
+
+        return Result.ok("提交成功", count);
+
+    }
+
+    /**
+     * 提交审核弹幕
+     * @param ids id 列表
+     * @return 提交成功的次数
+     */
+    @GetMapping("/notPassBullets")
+    public String checkNotPass(@RequestParam("ids") List<Integer> ids){
+
+        String checkTime = TimeUtils.simpleDateFormat.format(new Date());
+
+        int count = 0;
+
+        if (ids.size() > 0) {
+            for (Integer id : ids) {
+                if (bulletService.checkedNotPass(id, checkTime) > 0){
                     count++;
                 }
             }

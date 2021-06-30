@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>长书寄华年 短歌会明朝</title>
     <!-- 删除默认样式 -->
     <link rel="stylesheet" href="./css/reset.css">
     <!-- 完美适配 -->
@@ -13,7 +13,7 @@
         .user{
             width: 100vw;
             height: 100vh;
-            background-image: url("./背景素材_新/人员跳转.png");
+            background-image: url("./backgroundImages/unGraduate.png");
             background-size: 100vw 100vh;
         }
         #back{
@@ -28,15 +28,15 @@
 </head>
 <body>
     <div class="user">
-        <div id="back">
+        <!-- <div id="back">
             <img src="./图片素材/aui-icon-back.png" alt="">
-        </div>
+        </div> -->
     </div>
-    <script>
-        let back = document.getElementById("back");
-        back.onclick = function(){
-            history.back();
-        }
-    </script>
+    <!-- 引入微信 -->
+    <script type="text/javascript" src="https://res2.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <!-- 引入axios -->
+    <script src="./js/axios.js"></script>
+    <!-- 引入分享 -->
+    <script src="./js/share.js" type="module"></script>
 </body>
 </html>

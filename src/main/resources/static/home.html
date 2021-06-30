@@ -28,6 +28,7 @@
 	<link rel="stylesheet" href="./css/component.css">
 	<!-- 导入谢幕动画样式 -->
 	<link rel="stylesheet" href="./css/ending_style.css">
+	
 </head>
 
 <body>
@@ -44,7 +45,7 @@
 			</li> -->
 			<!-- 弹幕 -->
 			<li class="barrage">
-				<a href="javascript:;">
+				<a class="newpage" href="javascript:;">
 					<div class="barrage_box">
 						<img id="send" src="./图片素材/弹幕_1.png" alt="">
 						<img style="opacity: 0;" id="unsend" src="./图片素材/禁止弹幕_1.png" alt="">
@@ -53,7 +54,7 @@
 			</li>
 			<!-- 音乐 -->
 			<li class="music">
-				<a href="javascript:;">
+				<a class="newpage" href="javascript:;">
 					<div class="music_box">
 						<img src="./图片素材/Music disc_1.png" alt="">
 					</div>
@@ -76,7 +77,7 @@
 				<div class="contain normal" style="color: #07487a;">
 				</div>
 				<img class="to" src="./图片素材/引导.png" alt="">
-				
+
 			</div>
 			<div class="swiper-slide outer2 clearfix">
 				<!-- 内容区 -->
@@ -1762,7 +1763,7 @@
 							</div>
 						</div>
 						<div class="background">
-							<img src="./图片素材/学霸.webp" alt="">
+							<!-- <img src="./图片素材/well.png" alt=""> -->
 						</div>
 					</div>
 				</div>
@@ -1779,7 +1780,7 @@
 			<!-- 谢幕 -->
 			<div class="swiper-slide outer14 clearfix">
 				<!-- 重新观看 -->
-				<a class="fresh" href="">
+				<a class="newpage fresh" href="">
 					<img src="./图片素材/Refresh Page.png" alt="">
 				</a>
 				<!-- 内容区 -->
@@ -1789,37 +1790,61 @@
 							<h3>特别鸣谢</h3>
 						</li>
 						<li>
-							<h4>策划--网络和数据中心</h4>
+							<h4>出品</h4>
+							<p>网络和数据中心</p>
 						</li>
 						<li>
-							<h4>技术支持--网络和数据中心</span>
-								<p>陈&nbsp;&nbsp;&nbsp;&nbsp;原&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;李浩阳</p>
+							<h4>技术支持 -- 网络和数据中心</h4>
+								<p></p>
+								<p>2019级研究生</p>
+								<p>陈&nbsp;&nbsp;&nbsp;原</p>
+								<p></p>
+								<p>2020级研究生</p>
+								<p>李浩阳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;褚梦想</p>
 								<p>刘佳宇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;赵慧敏</p>
-								<p>李一航&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;董&nbsp;&nbsp;&nbsp;&nbsp;盼</p>
-								<p>尤&nbsp;&nbsp;&nbsp;&nbsp;琪&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;胡海洋</p>
-								<p>褚梦想</p>
+								<p>李一航&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;董&nbsp;&nbsp;&nbsp;盼</p>
+								<p>尤&nbsp;&nbsp;&nbsp;琪&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;胡海洋</p>
 						</li>
 						<li>
-							<h4>插图--艺术学院</h4>
-							<span>高千千&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;王&nbsp;&nbsp;&nbsp;&nbsp;甜</span>
-							<span>汪&nbsp;&nbsp;&nbsp;&nbsp;卓</span>
+							<h4>插图 -- 艺术学院</h4>
+							<p></p>
+							<p>2018级&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高千千</p>
+							<p>2019级&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;汪&nbsp;&nbsp;&nbsp;卓</p>
+							<p>2020级&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;王&nbsp;&nbsp;&nbsp;甜</p>
+							
 						</li>
 						<li>
-							<h4>文案--文学院</h4>
-							<span>李佳琦</span>
+							<h4>文案 -- 文学院</h4>
+							<p></p>
+							<p>2017级&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;李佳琦</p>
 						</li>
 						<li class="img_box">
 							<img src="./图片素材/谢幕.png" alt="">
 						</li>
 					</ul>
-					
+
 				</div>
-				<div id="save">
+				<!-- <div id="save">
 					<img src="./图片素材/createImage.png" alt="">
-				</div>
-				
+				</div> -->
+
 			</div>
 		</div>
+
+		<!-- 图片区 -->
+		<!-- <div id="longImg">
+			<div class="tip">
+				<span>长按图片保存</span>
+				<div id="close">
+					<img src="./图片素材/close.png" alt="">
+				</div>
+			</div>
+			<div class="loading">
+				<span>
+					加载中...
+				</span>
+			</div>	
+		</div> -->
 	</div>
 	<!-- 引入JQuery -->
 	<!-- <script src="./intertaction/js/jquery.min.js"></script> -->
@@ -1894,15 +1919,102 @@
 	<script src="./js/word.js" type="module"></script>
 
 	<!-- 一键生成图片 -->
-	<script src="./js/html2canvas.min.js"></script>
-    <script>
+	<!-- <script src="./js/html2canvas.min.js"></script>
+	<script>
+		history.pushState(null, null, document.URL); //禁止网页返回上一页
+
+		function base64toFile(dataurl, filename = 'file') {
+
+			let arr = dataurl.split(',')
+
+			let mime = arr[0].match(/:(.*?);/)[1]
+
+			let suffix = mime.split('/')[1]
+
+			let bstr = atob(arr[1])
+
+			let n = bstr.length
+
+			let u8arr = new Uint8Array(n)
+
+			while (n--) {
+
+				u8arr[n] = bstr.charCodeAt(n)
+
+			}
+			return u8arr;
+			// return new File([u8arr], `${filename}.${suffix}`, {
+
+			// 	type: mime
+
+			// })
+			// return new Blob([u8arr], {type: mime });
+
+		}
 		const exportCanvasAsPNG = (canvas, fileName) => {
+			// html2canvas(document.getElementById("longImg"),{
+			// 	allowTaint: false,
+            // useCORS: true,
+            // height:document.getElementById("longImg").offsetHeight,
+            // width: document.getElementById("longImg").offsetWidth,
+            // windowWidth: document.body.scrollWidth,
+            // windowHeight: document.body.scrollHeight,
+            // x: 0,
+            // // y: scrollTop, // 用网页滚动的高度定位y轴顶点
+            // dpi: window.devicePixelRatio * 2,
+            // scale: 2
+			// }).then(function(canvas){
+			// 	let canvasElement = canvas;
+			// 	var image = new Image();
+			// 	image.src = canvas.toDataURL("image/jpeg");
+			// 	image.crossOrigin = "anonymous";
+			// 	image.style.width = 80 + "vw";
+			// 	image.style.offsetHeight= 100 + "vh";
+			// 	console.log(image);
+			// 	$("#longImg").html(image);
+			// })
+
 			let canvasElement = canvas;
-			let MIME_TYPE = "image/png";
-			let imgURL = canvasElement.toDataURL(MIME_TYPE);
+			var image = new Image();
+			image.src = canvas.toDataURL("image/jpeg");
+			image.crossOrigin = "anonymous";
+			
+			// image.style.offsetHeight= 100 + "vh";
+			console.log(image);
+			// $("#longImg").append(image);
+			// $("#longImg").children[1].empty();
+			$("#longImg").append(image);
+			// $("#longImg").html(image);
+			// image.style.backgroundColor =  "transparent";
+			// image.style.height = 100 + "vh";
+			// let MIME_TYPE = "image/png";
+			// let imgURL = canvasElement.toDataURL(MIME_TYPE);
 			let dlLink = document.createElement('a');
 			dlLink.download = fileName;
 			dlLink.href = imgURL;
+			// let file = base64toFile(imgURL);
+			// console.log(file);
+			// $("#longImg").attr("src",file);
+			
+			// $("#longImg").attr("src",file);
+			
+			// let file = base64toFile(imgURL);
+			// console.log(file);
+			
+			// var date = new Date();
+			// const params = new FormData();
+			// params.append("image", file);
+
+			// params.append('image',dataURLtoBlob(imgURL),'IMG_'+date.getFullYear()+(date.getMonth()+1)+date.getDate()+Math.ceil(Math.random()*100)+'.jpeg');
+
+
+			// axios.post("http://10.8.49.234:8081/uploadImage",params, {
+			// 	headers:{
+            // 			'Accept': 'application/json',
+            // 			'Content-Type': 'multipart/form-data',
+          	// 			},
+				
+			// });
 			dlLink.dataset.downloadurl = [MIME_TYPE, dlLink.download, dlLink.href].join(':');
 			document.body.appendChild(dlLink);
 			dlLink.click();
@@ -1913,20 +2025,26 @@
 			let result = document.createElement('div');
 			// let el = document.getElementsByClassName("");
 			let el = document.getElementsByClassName('swiper-slide');
+			let i = 0;
 			Array.prototype.forEach.call(el, (item) => {
+				if(i >= 14){
+					return ;
+				}
 				// const p = item.children[0];
-				console.log(item.children);
-				// // const p = item.removeClass("");
-				// // console.log(item);
+				// console.log(item.children);
+				// const p = item.removeClass("");
+				// console.log(item);
 				// result.appendChild(p.cloneNode(true));
 				// result.appendChild(p.children[0]);
 				result.appendChild(item.cloneNode(true));
+				i++;
 			})
 			const body = document.querySelector("body");
 			body.appendChild(result);
 			html2canvas(result).then(canvas => {
-				console.log(result);
+
 				exportCanvasAsPNG(canvas, 'test');
+
 				body.removeChild(result);
 			});
 		}
@@ -1934,9 +2052,17 @@
 			screenShoot();
 		};
 	</script>
-
+	<script src="./js/longImg.js"></script> -->
+	
 	<!-- 引入分享 -->
-	<script src="./share.js" type="module"></script>
+	<script src="./js/share.js" type="module"></script>
+
+	<!-- 改变链接方式 -->
+	<!-- <script>
+	$('.newpage').on('click', function (event) {
+		window.location.replace($(this).attr('href-str'));
+		});
+	  </script> -->
 </body>
 
 </html>

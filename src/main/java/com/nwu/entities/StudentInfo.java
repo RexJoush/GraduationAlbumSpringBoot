@@ -21,7 +21,7 @@ public class StudentInfo implements Serializable {
     private String number;  // 学号
 
     /*  每页要展示的具体信息  */
-    private Page1 page1;
+    // private Page1 page1;
     private Page2 page2;
     private Page3 page3;
     private Page4 page4;
@@ -32,6 +32,6 @@ public class StudentInfo implements Serializable {
     private Page9 page9;
     private Page10 page10;
     private Page11 page11;
-    private Page12 page12;
+    // private Page12 page12;
 
 }

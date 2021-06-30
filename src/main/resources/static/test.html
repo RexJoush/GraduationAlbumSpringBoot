@@ -5,6 +5,43 @@
     <title>Title</title>
 </head>
 <body>
+  <img src="" alt="">
   <h3>test</h3>
+  <script>
+    /**
+* @description: base64位图片转码文件流
+* @param {type}
+* @Date: 2019-05-25 09:57:22
+*/
+
+function base64toFile (dataurl, filename = 'file') {
+ 
+ let arr = dataurl.split(',')
+
+ let mime = arr[0].match(/:(.*?);/)[1]
+
+ let suffix = mime.split('/')[1]
+
+ let bstr = atob(arr[1])
+
+ let n = bstr.length
+
+ let u8arr = new Uint8Array(n)
+
+ while (n--) {
+
+     u8arr[n] = bstr.charCodeAt(n)
+
+ }
+
+ return new File([u8arr], `${filename}.${suffix}`, {
+
+     type: mime
+
+ })
+
+}
+
+  </script>
 </body>
 </html>

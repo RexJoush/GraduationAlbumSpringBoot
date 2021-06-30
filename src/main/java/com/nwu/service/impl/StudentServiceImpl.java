@@ -4,13 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.nwu.entities.Reward;
 import com.nwu.entities.StudentInfo;
 import com.nwu.entities.page.*;
+import com.nwu.entities.vo.ResultVo;
 import com.nwu.entities.vo.StudentInfoVo;
 import com.nwu.mapper.StudentInfoMapper;
 import com.nwu.mapper.StudentMapper;
-import com.nwu.service.BookExceedService;
-import com.nwu.service.BulletService;
-import com.nwu.service.RewardService;
-import com.nwu.service.StudentService;
+import com.nwu.service.*;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -31,39 +29,37 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
 
     @Resource
-    private StudentInfoMapper infoMapper;
+    private ResultVoService resultVoService;
 
     @Resource
     private RewardService rewardService;
 
     @Resource
-    private BookExceedService bookExceedService;
-
-    @Resource
     private StudentMapper studentMapper;
 
     @Resource
-    private RedisTemplate<String, StudentInfo> redisTemplate;
+    private RedisTemplate<Object, Object> redisTemplate;
 
     @Override
     public StudentInfo getStudentInfo(String number) {
 
         // 获取 redis 操作对象
-        ValueOperations<String, StudentInfo> stringStudentInfoValueOperations = redisTemplate.opsForValue();
+        ValueOperations<Object, Object> stringStudentInfoValueOperations = redisTemplate.opsForValue();
 
         // 如果有，直接返回数据，没有则去数据库查
         try {
             if (redisTemplate.hasKey(number)) {
                 // System.out.println("redis info");
-                return stringStudentInfoValueOperations.get(number);
+                return (StudentInfo) stringStudentInfoValueOperations.get(number);
             }
         } catch (NullPointerException e){
+            e.fillInStackTrace();
             return null;
         }
 
-        StudentInfoVo studentInfoVo = infoMapper.getStudentInfo(number);
+        ResultVo resultVo = resultVoService.getById(number);
 
-        if (studentInfoVo == null) {
+        if (resultVo == null) {
             return null;
         }
 
@@ -85,12 +81,12 @@ public class StudentServiceImpl implements StudentService {
         )
 
          */
-        //System.out.println(studentInfoVo);
+        // System.out.println(studentInfoVo);
         StudentInfo studentInfo = new StudentInfo();
 
 
         // 分页对象
-        Page1 page1 = new Page1();
+        // Page1 page1 = new Page1();
         Page2 page2 = new Page2();
         Page3 page3 = new Page3();
         Page4 page4 = new Page4();
@@ -101,85 +97,82 @@ public class StudentServiceImpl implements StudentService {
         Page9 page9 = new Page9();
         Page10 page10 = new Page10();
         Page11 page11 = new Page11();
-        Page12 page12 = new Page12();
-
-        // 计算学制
-        String educationalSystem = String.valueOf(Calendar.getInstance().get(Calendar.YEAR) - Integer.parseInt(number.substring(0, 4)));
+        // Page12 page12 = new Page12();
 
 
         // 封装学号
         studentInfo.setNumber(number);
 
         // 封装第 1 页
-        studentInfo.setPage1(page1);
+        // studentInfo.setPage1(page1);
 
         // 封装第 2 页
-        page2.setEducationalSystem(educationalSystem);
+        page2.setEducationalSystem(resultVo.getEducationalSystem());
         studentInfo.setPage2(page2);
 
         // 封装第 3 页
-        page3.setEducationalSystem(educationalSystem);
+        page3.setEducationalSystem(resultVo.getEducationalSystem());
         studentInfo.setPage3(page3);
 
         // 封装第 4 页
-        page4.setName(studentInfoVo.getName());
+        page4.setName(resultVo.getName());
         studentInfo.setPage4(page4);
 
         // 封装第 5 页
-        page5.setEnrollmentYear("2020-09-03"); // Todo: 入学日期
+        page5.setEnrollmentYear(resultVo.getEnrollmentYear());
         studentInfo.setPage5(page5);
 
         // 封装第 6 页
-        page6.setCampus(studentInfoVo.getCampus());
-        page6.setApartment(studentInfoVo.getApartment());
-        page6.setDormitory(studentInfoVo.getDormitory());
-        page6.setBed(studentInfoVo.getBed());
-        page6.setRoommates(3); // Todo: 舍友人数
-        page6.setMajor(studentInfoVo.getMajor());
+        page6.setCampus(resultVo.getCampus());
+        page6.setApartment(resultVo.getApartment());
+        page6.setDormitory(resultVo.getDormitory());
+        page6.setBed(resultVo.getBed());
+        page6.setRoommates(resultVo.getRoommates());
+        page6.setMajor(resultVo.getMajor());
         studentInfo.setPage6(page6);
 
         // 封装第 7 页
-        page7.setFirstToCanteen(studentInfoVo.getFirstToCanteen());
-        page7.setFirstPos(studentInfoVo.getFirstPos());
-        page7.setFirstCost(studentInfoVo.getFirstCost());
-        page7.setFirstMeal(studentInfoVo.getFirstMeal());
-        page7.setTotalTimesCanteen(studentInfoVo.getTotalTimesCanteen());
-        page7.setFavoriteMeal(studentInfoVo.getFavoriteMeal());
-        page7.setFavoriteMealTimes(studentInfoVo.getFavoriteMealTimes());
+        page7.setFirstToCanteen(resultVo.getFirstToCanteen());
+        page7.setFirstPos(resultVo.getFirstPos());
+        page7.setFirstCost(resultVo.getFirstCost());
+        page7.setFirstMeal(resultVo.getFirstMeal());
+        page7.setTotalTimesCanteen(resultVo.getTotalTimesCanteen());
+        page7.setFavoriteMeal(resultVo.getFavoriteMeal());
+        page7.setFavoriteMealTimes(resultVo.getFavoriteMealTimes());
         studentInfo.setPage7(page7);
 
         // 封装第 8 页
-        page8.setFirstToLibrary(studentInfoVo.getFirstToLibrary());
-        page8.setTotalTimesLibrary(studentInfoVo.getTotalTimesLibrary());
-        page8.setTotalLoan(studentInfoVo.getTotalLoan());
-        page8.setBookName(studentInfoVo.getBookName());
+        page8.setFirstToLibrary(resultVo.getFirstToLibrary());
+        page8.setTotalTimesLibrary(resultVo.getTotalTimesLibrary());
+        page8.setTotalLoan(resultVo.getTotalLoan());
+        page8.setBookName(resultVo.getBookName());
         // 超过的人数
-        page8.setExceeds(bookExceedService.getExceed(number));
+        page8.setExceeds(resultVo.getExceeds());
         studentInfo.setPage8(page8);
 
         // 封装第 9 页
-        page9.setFirstCourseTime(studentInfoVo.getFirstCourseTime());
-        page9.setFirstCourseName(studentInfoVo.getFirstCourseName());
-        page9.setTotalCourses(studentInfoVo.getTotalCourses());
-        page9.setTotalCredit(studentInfoVo.getTotalCredit());
-        page9.setTotalClassHours(studentInfoVo.getTotalClassHours());
+        page9.setFirstCourseTime(resultVo.getFirstCourseTime());
+        page9.setFirstCourseName(resultVo.getFirstCourseName());
+        page9.setTotalCourses(resultVo.getTotalCourses());
+        page9.setTotalCredit(resultVo.getTotalCredit());
+        page9.setTotalClassHours(resultVo.getTotalClassHours());
         studentInfo.setPage9(page9);
 
         // 封装第 10 页
-        page10.setGymTimes(studentInfoVo.getGymTimes());
+        page10.setGymTimes(resultVo.getGymTimes());
         studentInfo.setPage10(page10);
 
         // 封装第 11 页
         QueryWrapper<Reward> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("number", studentInfoVo.getNumber());
+        queryWrapper.eq("number", resultVo.getNumber());
         List<Reward> rewards = rewardService.list(queryWrapper);
 
-        page11.setEducationalSystem(educationalSystem);
+        page11.setEducationalSystem(resultVo.getEducationalSystem());
         page11.setRewards(rewards);
         studentInfo.setPage11(page11);
 
         // 封装第 12 页
-        studentInfo.setPage12(page12);
+        // studentInfo.setPage12(page12);
 
         stringStudentInfoValueOperations.set(number, studentInfo);
 

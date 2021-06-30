@@ -12,8 +12,6 @@
   <link rel="stylesheet" href="./css/vw.css">
   <!-- 样式 -->
   <link rel="stylesheet" href="./css/style_index.css">
-
-
 </head>
 
 <body>
@@ -22,22 +20,34 @@
     <!-- 选择框 -->
     <div class="button_box">
       <!-- 是 -->
-      <a class="yes" href="./interaction/second_t.html">
+      <!-- window.location.replace() -->
+      <div class="yes">
         <img src="./interaction/images/yes.png" alt="">
-      </a>
+      </div>
       <!-- 否 -->
-      <a class="no" href="./interaction/second_f.html">
+      <div class="no">
         <img src="./interaction/images/no.png" alt="">
-      </a>
+      </div>
     </div>
   </div>
-
+  <!-- 引入jQuery -->
+  <script src="./js/jQuery.js"></script>
   <!-- 引入微信文件 -->
   <script type="text/javascript" src="https://res2.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
   <!-- 引入axios -->
   <script src="./js/axios.js"></script>
   <!-- 引入分享 -->
-  <script src="./share.js"  type="module"></script>
+  <script src="./js/share.js" type="module"></script>
+
+  <script>
+      $('.yes').on('click', function (event) {
+        window.location.replace("./interaction/second_t.html");
+      });
+      $('.no').on('click', function (event) {
+        window.location.replace('./interaction/second_f.html');
+      });
+      // history.pushState(null, null, document.URL); //禁止网页返回上一页
+  </script>
 </body>
 
 </html>

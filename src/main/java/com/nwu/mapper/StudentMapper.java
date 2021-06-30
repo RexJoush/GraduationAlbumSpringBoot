@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface StudentMapper {
 
-    @Select("select name from stu_all2021 where number = #{number}")
+    @Select("select name from def_result2021 where number = #{number}")
     String getStudentName(String number);
 
 }

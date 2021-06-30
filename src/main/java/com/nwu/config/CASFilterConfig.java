@@ -1,11 +1,11 @@
 package com.nwu.config;
 
-import com.nwu.filter.LocalUserInfoFilter;
 import org.jasig.cas.client.authentication.AuthenticationFilter;
 import org.jasig.cas.client.session.SingleSignOutFilter;
 import org.jasig.cas.client.session.SingleSignOutHttpSessionListener;
 import org.jasig.cas.client.util.HttpServletRequestWrapperFilter;
 import org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -19,8 +19,10 @@ import org.springframework.core.Ordered;
 @Configuration
 public class CASFilterConfig {
 
-    private   String CAS_URL = "http://authserver.nwu.edu.cn/authserver";
-    private   String APP_URL = "http://bys.nwu.edu.cn:8080/";
+    @Value("${union.casURL}")
+    private String CAS_URL;
+    @Value("${union.appURL}")
+    private String APP_URL;
 
     @Bean
     public ServletListenerRegistrationBean servletListenerRegistrationBean(){
